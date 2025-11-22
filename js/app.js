@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const timerTemplate = document.getElementById("timer-template").content.firstElementChild;
     const addButton = document.getElementById("add-timer");
 
+    // Re-apply body class after DOM content is loaded
+    const bodyClass = localStorage.getItem("bodyClass");
+    if (bodyClass) {
+        document.body.classList.add(bodyClass);
+    }
+
     // Get existing timers from local storage
     const storedTimers = JSON.parse(localStorage.getItem("timers"));
     if (storedTimers) {
@@ -27,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('logo').addEventListener("click", () => {
         document.body.classList.toggle("fit316-style");
         document.body.classList.toggle("rsr-style");
+        localStorage.setItem("bodyClass", document.body.className);
     });
 
     /**
