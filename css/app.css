@@ -64,6 +64,17 @@ header #logo {
   background-size: contain;
   margin: 0 auto;
 }
+header button {
+  background: transparent;
+  border: none;
+  font-size: 4em;
+  color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
 
 body.fit316-style header #logo {
   background-image: url(../img/fit316-logo.png);
@@ -113,6 +124,7 @@ body.rsr-style header #logo {
 .timer .time {
   font-size: 5em;
   margin: 0.75rem 0;
+  cursor: pointer;
 }
 .timer .hours:after, .timer .minutes:after {
   content: ":";

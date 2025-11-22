@@ -3,6 +3,7 @@ class Timer {
 
     id = null;
     timer = null;
+    label = null;
     isActive = false;
     startTime = null;
     intervalId = null;
@@ -11,9 +12,10 @@ class Timer {
     constructor(id, htmlTemplate, location) {
         this.id = id;
         this.timer = htmlTemplate.cloneNode(true);
+        this.label = this.timer.querySelector('label');
         location.appendChild(this.timer);
 
-        this.timer.addEventListener('click', () => {
+        this.timer.querySelector('.time').addEventListener('click', () => {
             if (this.isActive) {
                 // Pause timer
                 this.pauseTimer();
@@ -23,9 +25,17 @@ class Timer {
             }
         });
 
+        this.label.addEventListener('input', () => {
+            this.setCookie('label', this.label.textContent);
+        });
+
         let cookieStartTime = parseInt(this.getCookie('startTime')),
             cookieIsActive = this.getCookie('isActive'),
-            cookiePausedTime = parseInt(this.getCookie('pausedTime'));
+            cookiePausedTime = parseInt(this.getCookie('pausedTime')),
+            cookieLabel = this.getCookie('label');
+        if (cookieLabel !== null) {
+            this.label.textContent = cookieLabel;
+        }
         if (cookieStartTime !== null) {
             this.startTime = cookieStartTime;
             // Fix errors

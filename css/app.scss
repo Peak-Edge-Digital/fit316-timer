@@ -17,7 +17,7 @@ html, body {
 
 body {
   background-color: $background_colour;
-  color: $text_color;
+  color: $text_colour;
   font-size: 10px;
   font-family: "Kanit", sans-serif;
   font-weight: 250;
@@ -30,7 +30,7 @@ body {
 }
 body.rsr-style {
   background-color: $background_alt_colour;
-  color: $text_alt_color;
+  color: $text_alt_colour;
 }
 
 main {
