@@ -1,17 +1,154 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 9 | @use 'partials/header';
- *   | ^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   app.scss 9:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 9 \2502  @use 'partials/header';\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   app.scss 9:1  root stylesheet";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, main, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+  text-align: center;
+  margin-top: -1rem;
+}
+header #logo {
+  height: 100px;
+  width: 200px;
+  background: center center no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+}
+
+body.fit316-style header #logo {
+  background-image: url(../img/fit316-logo.png);
+}
+
+body.rsr-style header #logo {
+  background-image: url(../img/rate-strong-race-logo.jpeg);
+  height: 150px;
+}
+
+.timer-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 1em;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#master-timer {
+  width: 100%;
+  border: none;
+  flex-grow: 2;
+  padding: 1em;
+  align-content: center;
+}
+#master-timer .time {
+  font-size: 7em;
+}
+
+.timer {
+  display: block;
+  padding: 3em 1em 1em 1em;
+  border: 1px dotted rgb(127.5, 127.5, 127.5);
+  width: calc(25% - 2px - 3em);
+  margin: 1em;
+}
+.timer label {
+  display: block;
+  font-size: 4em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.timer label:hover {
+  outline: #ffffff solid 1px;
+}
+.timer .time {
+  font-size: 5em;
+  margin: 0.75rem 0;
+}
+.timer .hours:after, .timer .minutes:after {
+  content: ":";
+}
+.timer .seconds:after {
+  content: ".";
+}
+
+html, body {
+  margin: 0;
+  height: calc(var(--vh) * 100);
+}
+
+body {
+  background-color: #191919;
+  color: #ffffff;
+  font-size: 10px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 250;
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+body.rsr-style {
+  background-color: #606060;
+  color: #ffffff;
+}
+
+main {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=app.css.map */

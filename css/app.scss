@@ -7,3 +7,34 @@
 @use 'partials/animations';
 @use 'partials/text';
 @use 'partials/header';
+@use 'partials/timers';
+
+
+html, body {
+  margin: 0;
+  height: calc(var(--vh) * 100);
+}
+
+body {
+  background-color: $background_colour;
+  color: $text_color;
+  font-size: 10px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 250;
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+body.rsr-style {
+  background-color: $background_alt_colour;
+  color: $text_alt_color;
+}
+
+main {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}

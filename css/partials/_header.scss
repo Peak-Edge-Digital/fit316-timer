@@ -1,0 +1,21 @@
+header {
+  text-align: center;
+  margin-top: -1rem;
+
+  #logo {
+    height: 100px;
+    width: 200px;
+    background: center center no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+  }
+}
+
+body.fit316-style header #logo {
+  background-image: url(../img/fit316-logo.png);
+}
+
+body.rsr-style header #logo {
+  background-image: url(../img/rate-strong-race-logo.jpeg);
+  height: 150px;
+}

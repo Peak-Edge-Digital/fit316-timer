@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+.timer-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items:flex-start;
+  gap: 1em;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#master-timer {
+  width: 100%;
+  border: none;
+  flex-grow: 2;
+  padding: 1em;
+  align-content: center;
+
+  .time {
+    font-size: 7em;
+  }
+}
+
+.timer {
+  display: block;
+  padding: 3em 1em 1em 1em;
+  border: 1px dotted darken($primary_contrast_colour, 50);
+  width: calc(25% - 2px - 3em);
+  margin: 1em;
+
+  label {
+    display: block;
+    font-size: 4em;
+    margin-bottom:0.5em;
+    text-transform: uppercase;
+
+    &:hover {
+      outline: $primary_contrast_colour solid 1px;
+    }
+  }
+
+  .time {
+    font-size: 5em;
+    margin: 0.75rem 0;
+  }
+  .hours, .minutes {
+
+    &:after {
+      content: ":";
+    }
+  }
+  .seconds:after {
+    content: ".";
+  }
+}
