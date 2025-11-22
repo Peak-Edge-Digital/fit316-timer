@@ -115,7 +115,7 @@ body.rsr-style header #logo {
   position: relative;
   padding: 3em 1em 1em 1em;
   border: 1px dotted rgb(127.5, 127.5, 127.5);
-  width: calc(25% - 2px - 3em);
+  width: calc(50% - 2px - 3em);
   margin: 1em;
 }
 .timer button.close {
@@ -136,7 +136,7 @@ body.rsr-style header #logo {
 }
 .timer label {
   display: block;
-  font-size: 4em;
+  font-size: 3.5em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
 }
@@ -147,15 +147,20 @@ body.rsr-style header #logo {
   font-size: 5em;
   margin: 0.75rem 0;
   cursor: pointer;
+  font-family: "Consolas", "Menlo", monospace;
+  padding-left: 1.15em;
 }
 .timer .hours:after, .timer .minutes:after {
   content: ":";
 }
 .timer .seconds:after {
   content: ".";
+  opacity: 0.5;
+  font-size: 0.65em;
 }
 .timer .milliseconds {
   opacity: 0.5;
+  font-size: 0.65em;
 }
 
 html, body {
@@ -167,7 +172,7 @@ body {
   background-color: #191919;
   color: #ffffff;
   font-size: 10px;
-  font-family: "Kanit", sans-serif;
+  font-family: sans-serif;
   font-weight: 250;
   position: relative;
   text-align: center;
