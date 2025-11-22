@@ -20,6 +20,8 @@ class Timer {
         this.closeButton = this.timer.querySelector('.close');
         this.onStateChangeCallback = onStateChangeCallback;
         this.onRemoveCallback = onRemoveCallback;
+        this.labelText = 'Timer ' + (id + 1);
+        this.label.textContent = this.labelText;
 
         // Draw the HTML
         this.draw(location);
