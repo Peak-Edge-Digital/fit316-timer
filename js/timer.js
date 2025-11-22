@@ -4,18 +4,23 @@ class Timer {
     id = null;
     timer = null;
     label = null;
+    labelText = null;
     isActive = false;
     startTime = null;
     intervalId = null;
     elapsedTime = 0
+    onStateChangeCallback = {};
 
-    constructor(id, htmlTemplate, location) {
+    constructor(id, htmlTemplate, location, onStateChangeCallback = {}) {
         this.id = id;
         this.timer = htmlTemplate.cloneNode(true);
         this.label = this.timer.querySelector('label');
+        this.onStateChangeCallback = onStateChangeCallback;
 
+        // Draw the HTML
         this.draw(location);
 
+        // Add listener for on time click
         this.timer.querySelector('.time').addEventListener('click', () => {
             if (this.isActive) {
                 // Pause timer
@@ -24,33 +29,29 @@ class Timer {
                 // Start timer
                 this.startTimer();
             }
+            this.onStateChangeCallback();
         });
 
-        this.label.addEventListener('input', () => {
-            this.setCookie('label', this.label.textContent);
+        // Add listener for label change
+        this.label.addEventListener('blur', () => {
+            this.labelText = this.label.textContent;
+            this.onStateChangeCallback();
         });
 
-        let cookieStartTime = parseInt(this.getCookie('startTime')),
-            cookieIsActive = this.getCookie('isActive'),
-            cookiePausedTime = parseInt(this.getCookie('pausedTime')),
-            cookieLabel = this.getCookie('label');
-        if (cookieLabel !== null) {
-            this.label.textContent = cookieLabel;
-        }
-        if (cookieStartTime !== null) {
-            this.startTime = cookieStartTime;
-            // Fix errors
-            if (isNaN(this.startTime)) {
-                this.startTime = null;
-            }
-            if (cookieIsActive === 'true') {
-                this.startTimer(false);
-            } else {
-                if (!isNaN(cookiePausedTime)) {
-                    this.storeElapsedTime(cookiePausedTime);
-                    this.updateTime(cookiePausedTime);
-                }
-            }
+    }
+
+    restoreData(data) {
+        this.labelText = data.labelText;
+        this.label.textContent = this.labelText;
+        this.startTime = data.startTime;
+        this.isActive = data.isActive;
+        this.elapsedTime = data.elapsedTime;
+
+        if (this.isActive) {
+            this.startTimer(false);
+        } else {
+            this.startTime = Date.now() - this.elapsedTime;
+            this.updateTime();
         }
     }
 
@@ -73,8 +74,6 @@ class Timer {
         this.intervalId = setInterval(() => {
             this.updateTime();
         }, 40);
-        this.setCookie('startTime', this.startTime);
-        this.setCookie('isActive', this.isActive);
     }
 
     pauseTimer() {
@@ -82,8 +81,6 @@ class Timer {
         this.timer.classList.remove('active');
         clearInterval(this.intervalId);
         this.storeElapsedTime();
-        this.setCookie('isActive', this.isActive);
-        this.setCookie('pausedTime', Date.now());
     }
 
     updateTime(givenTime = null) {
@@ -107,29 +104,6 @@ class Timer {
 
     isActive() {
         return this.isActive;
-    }
-
-    setCookie(name, value) {
-        let d = new Date();
-        d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + d.toUTCString();
-        document.cookie = 'fit316_timer_' + this.id + '_' + name + "=" + value + ";" + expires + ";path=/";
-    }
-
-    getCookie(name) {
-        let varName = 'fit316_timer_' + this.id + '_' + name + "=",
-            decodedCookie = decodeURIComponent(document.cookie),
-            ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(varName) == 0) {
-                return c.substring(varName.length, c.length);
-            }
-        }
-        return null;
     }
 
 }

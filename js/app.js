@@ -9,15 +9,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const storedTimers = JSON.parse(localStorage.getItem("timers"));
     if (storedTimers) {
         storedTimers.forEach(timer => {
-           let t = new Timer(timer.id, timerTemplate, timerLocation);
-           timers.push(t);
+           let restoredTimer = new Timer(timer.id, timerTemplate, timerLocation, storeTimers);
+           restoredTimer.restoreData(timer);
+           timers.push(restoredTimer);
         });
     }
 
     addButton.addEventListener("click", () => {
         timers.push(
-            new Timer(timers.length+1, timerTemplate, timerLocation)
+            new Timer(timers.length, timerTemplate, timerLocation, storeTimers)
         );
-        localStorage.setItem("timers", JSON.stringify(timers));
+        storeTimers();
     });
+
+    function storeTimers() {
+        const timerData = timers.map(t => ({
+            id: t.id,
+            labelText: t.labelText,
+            startTime: t.startTime,
+            isActive: t.isActive,
+            elapsedTime: t.elapsedTime,
+            pausedTime: t.pausedTime
+        }));
+        localStorage.setItem("timers", JSON.stringify(timerData));
+    }
 });
