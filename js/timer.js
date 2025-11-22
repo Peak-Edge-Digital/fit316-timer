@@ -13,7 +13,8 @@ class Timer {
         this.id = id;
         this.timer = htmlTemplate.cloneNode(true);
         this.label = this.timer.querySelector('label');
-        location.appendChild(this.timer);
+
+        this.draw(location);
 
         this.timer.querySelector('.time').addEventListener('click', () => {
             if (this.isActive) {
@@ -51,6 +52,10 @@ class Timer {
                 }
             }
         }
+    }
+
+    draw(location) {
+        location.appendChild(this.timer);
     }
 
     startTimer(setStartTime = true) {
