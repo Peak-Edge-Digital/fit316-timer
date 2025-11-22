@@ -29,6 +29,12 @@
   width: calc(50% - 2px - 3em);
   margin: 1em;
 
+  &:first-child {
+    width: 100%;
+    border: none;
+    font-size: 1.3em;
+  }
+
   button.close {
     background: transparent;
     border: none;

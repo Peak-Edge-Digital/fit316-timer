@@ -118,6 +118,11 @@ body.rsr-style header #logo {
   width: calc(50% - 2px - 3em);
   margin: 1em;
 }
+.timer:first-child {
+  width: 100%;
+  border: none;
+  font-size: 1.3em;
+}
 .timer button.close {
   background: transparent;
   border: none;
