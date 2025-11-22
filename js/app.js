@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Add new timer when the "Add Timer" button is clicked
     addButton.addEventListener("click", () => {
         timers.push(
             new Timer(timers.length, timerTemplate, timerLocation, storeTimers, removeTimer)
@@ -22,6 +23,15 @@ document.addEventListener("DOMContentLoaded", function() {
         storeTimers();
     });
 
+    // Toggle style
+    document.getElementById('logo').addEventListener("click", () => {
+        document.body.classList.toggle("fit316-style");
+        document.body.classList.toggle("rsr-style");
+    });
+
+    /**
+     * Store the current state of all timers in local storage.
+     */
     function storeTimers() {
         const timerData = timers.map(t => ({
             id: t.id,
@@ -34,6 +44,10 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("timers", JSON.stringify(timerData));
     }
 
+    /**
+     * Remove a timer from the UI and local storage.
+     * @param timerId
+     */
     function removeTimer(timerId) {
         const index = timers.findIndex(t => t.id === timerId);
         if (index !== -1) {
