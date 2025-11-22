@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.timer-wrapper {
+#timer-wrapper {
   display: flex;
   justify-content: space-evenly;
   align-items:flex-start;
@@ -51,5 +51,8 @@
   }
   .seconds:after {
     content: ".";
+  }
+  .milliseconds {
+    opacity: 0.5;
   }
 }
