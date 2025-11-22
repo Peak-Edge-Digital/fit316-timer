@@ -5,17 +5,21 @@ class Timer {
     timer = null;
     label = null;
     labelText = null;
+    closeButton = null
     isActive = false;
     startTime = null;
     intervalId = null;
     elapsedTime = 0
     onStateChangeCallback = {};
+    onRemoveCallback = {};
 
-    constructor(id, htmlTemplate, location, onStateChangeCallback = {}) {
+    constructor(id, htmlTemplate, location, onStateChangeCallback = {}, onRemoveCallback = {}) {
         this.id = id;
         this.timer = htmlTemplate.cloneNode(true);
         this.label = this.timer.querySelector('label');
+        this.closeButton = this.timer.querySelector('.close');
         this.onStateChangeCallback = onStateChangeCallback;
+        this.onRemoveCallback = onRemoveCallback;
 
         // Draw the HTML
         this.draw(location);
@@ -37,6 +41,13 @@ class Timer {
             this.labelText = this.label.textContent;
             this.onStateChangeCallback();
         });
+
+        // Add listener for close button click
+        this.closeButton.addEventListener('click', () => {
+            this.pauseTimer();
+            this.remove();
+            this.onRemoveCallback(this.id);
+        })
 
     }
 
@@ -102,8 +113,8 @@ class Timer {
         this.elapsedTime = time - this.startTime;
     }
 
-    isActive() {
-        return this.isActive;
+    remove() {
+        this.timer.remove();
     }
 
 }

@@ -23,10 +23,29 @@
 
 .timer {
   display: block;
+  position: relative;
   padding: 3em 1em 1em 1em;
   border: 1px dotted darken($primary_contrast_colour, 50);
   width: calc(25% - 2px - 3em);
   margin: 1em;
+
+  button.close {
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: $text_colour;
+    cursor: pointer;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    opacity: 0.3;
+    transition: opacity 0.5s;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  }
 
   label {
     display: block;

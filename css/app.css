@@ -74,6 +74,11 @@ header button {
   position: absolute;
   right: 2rem;
   top: 2rem;
+  transition: opacity 0.5s;
+}
+header button:hover {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 body.fit316-style header #logo {
@@ -107,10 +112,27 @@ body.rsr-style header #logo {
 
 .timer {
   display: block;
+  position: relative;
   padding: 3em 1em 1em 1em;
   border: 1px dotted rgb(127.5, 127.5, 127.5);
   width: calc(25% - 2px - 3em);
   margin: 1em;
+}
+.timer button.close {
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+}
+.timer button.close:hover {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 .timer label {
   display: block;

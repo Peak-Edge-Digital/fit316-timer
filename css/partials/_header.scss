@@ -22,6 +22,12 @@ header {
     position: absolute;
     right: 2rem;
     top: 2rem;
+    transition: opacity 0.5s;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
   }
 }
 
