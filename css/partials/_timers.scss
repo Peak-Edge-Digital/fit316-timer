@@ -4,36 +4,48 @@
   display: flex;
   justify-content: space-evenly;
   align-items:flex-start;
-  gap: 1em;
+  gap: 0;
   flex-wrap: wrap;
   flex-direction: row;
-}
-
-#master-timer {
-  width: 100%;
-  border: none;
-  flex-grow: 2;
-  padding: 1em;
-  align-content: center;
-
-  .time {
-    font-size: 7em;
-  }
 }
 
 .timer {
   display: block;
   position: relative;
-  padding: 3em 1em 1em 1em;
-  border: 1px dotted darken($primary_contrast_colour, 50);
-  width: calc(50% - 2px - 3em);
-  margin: 1em;
+  width: calc(50%);
+  padding: 2.2em 0;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-color: $secondary_colour;
 
   &:first-child {
     width: 100%;
-    border: none;
     font-size: 1.3em;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
   }
+
+  &:nth-child(2n) {
+    border-right-width: 3px;
+    border-right-style: solid;
+  }
+
+
+  //&:nth-last-child(2n+1):last-child {
+  //  border-right-width: 3px;
+  //  border-right-style: solid;
+  //  border-left-width: 3px;
+  //  border-left-style: solid;
+  //}
+
+  &:nth-child(even):last-child {
+    //border-left: none;
+    //border-right: none;
+    border-left-width: 3px;
+    border-left-style: solid;
+  }
+
+
 
   button.close {
     background: transparent;
@@ -55,9 +67,13 @@
 
   label {
     display: block;
-    font-size: 3.5em;
-    margin-bottom:0.5em;
+    margin-bottom: 0.5em;
     text-transform: uppercase;
+    font-size: 5em;
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: $secondary_colour;
 
     &:hover {
       outline: $primary_contrast_colour solid 1px;
@@ -65,7 +81,7 @@
   }
 
   .time {
-    font-size: 5em;
+    font-size: 6em;
     margin: 0.75rem 0;
     cursor: pointer;
     font-family: "Consolas", "Menlo", monospace;

@@ -23,14 +23,22 @@ body {
   font-weight: 250;
   position: relative;
   text-align: center;
-  padding: 2rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
+// Rate Strong Race styles
 body.rsr-style {
-  background-color: $background_alt_colour;
-  color: $text_alt_colour;
+
+  .timer {
+    border-color: $secondary_alt_colour;
+
+    label {
+      color: $secondary_alt_colour;
+    }
+  }
 }
 
 main {
